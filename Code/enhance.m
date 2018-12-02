@@ -21,6 +21,7 @@ nG=G;
 nB=B;
 lumm=B;
 num=0;
+dim = size(I);
 bsize=15;
 for x =1:bsize:(1920)
     for y=1:bsize:(1080)
