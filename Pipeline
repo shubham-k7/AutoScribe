@@ -1,0 +1,9 @@
+Basic Flow ye hai -
+For every image-
+Call person check function
+Call crop function to get only the board
+Divide image into 3/4 equal parts
+Call enhance function on each part
+Call check difference function to see if there has been a significant change from the previous part
+If yes, append the part to final set of images
+Basically harr iteration off loop mei we will compare with the parts of the board from the previous part

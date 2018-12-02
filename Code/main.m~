@@ -1,0 +1,17 @@
+% This code is where the main pipeline is combined
+
+source_dir = 'Photos/*.jpg'; 
+ids = imageDatastore(source_dir);
+countEachLabel
+while hasdata(ids) 
+    
+    img = read(ds) ;             % read image from datastore
+    figure, imshow(img);    % creates a new window for each image
+end
+[I_cropped,I_cropped_size] = rectify_image(I);
+
+subplot(2,1,1);
+imshow(I);
+
+subplot(2,1,2);
+imshow(I_cropped);
