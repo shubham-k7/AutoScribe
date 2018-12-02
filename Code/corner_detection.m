@@ -1,4 +1,4 @@
-function [rectified,rsize, pq] = rectify_image(I)
+function [rectified,rsize, pq] = corner_detection(I)
 
 % Sharpen and convert to Grayscale.
 I = imsharpen(I);
