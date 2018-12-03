@@ -1,7 +1,7 @@
 clear all;
 close all;
 clc;
-I = imread('Photos/demo0.jpg');
+I = imread('../Photos/nlp.jpg');
 I = imsharpen(I);
 I_grey = rgb2gray(I);
 imshow(I);
@@ -103,18 +103,18 @@ for i = 1:4
     text(pd(i,1),pd(i,2),sprintf('%d',i),'BackgroundColor','white');
 end
 
-% xmin = min(p(1,:))+5;
-% ymin = min(p(2,:))+5;
-% xmax = max(p(1,:))-5;
-% ymax = max(p(2,:))-5;
-% cr = [xmin,ymin,xmax-xmin,ymax-ymin];
-% cr_points = [xmin,ymin;xmax,ymin;xmax,ymax;xmin,ymax];
-% 
-% H1 = homography(p, cr_points');
-% whiteboard_persp = homwarp(H1, I);
-% I_perspective_resized = imresize(whiteboard_persp,size(BW));
-% [I_cropped,rect] = imcrop(I_perspective_resized,cr);
-[I_cropped,rect,cr_points] = perps_correction(I,BW,p);
+xmin = min(p(1,:))+5;
+ymin = min(p(2,:))+5;
+xmax = max(p(1,:))-5;
+ymax = max(p(2,:))-5;
+cr = [xmin,ymin,xmax-xmin,ymax-ymin];
+cr_points = [xmin,ymin;xmax,ymin;xmax,ymax;xmin,ymax];
+
+H1 = homography(p, cr_points');
+whiteboard_persp = homwarp(H1, I);
+I_perspective_resized = imresize(whiteboard_persp,size(BW));
+[I_cropped,rect] = imcrop(I_perspective_resized,cr);
+% [I_cropped,rect,cr_points] = perps_correction(I,BW,p);
 % imwrite(I_cropped,'img1-cropped.jpg','jpg');
 
 subplot(2,2,1);
@@ -137,7 +137,7 @@ for i = 1:length(theta)
 end
 
 subplot(2,2,3);
-% imshow(I_perspective_resized);
+imshow(I_perspective_resized);
 hold on;
 
 for k = 1:4
@@ -149,3 +149,7 @@ title('Perspective transformed');
 subplot(2,2,4);
 imshow(I_cropped);
 title('Cropped whiteboard')
+
+%%
+I_nice = enhance(I_cropped);
+figure, imshow(I_nice);

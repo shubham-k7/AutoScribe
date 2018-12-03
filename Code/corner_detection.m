@@ -1,4 +1,4 @@
-function [rectified,rsize, pq] = corner_detection(I)
+function [I_cropped,rsize, p, BW] = corner_detection(I)
 
 % Sharpen and convert to Grayscale.
 I = imsharpen(I);
@@ -107,7 +107,8 @@ cr_points = [xmin,ymin;xmax,ymin;xmax,ymax;xmin,ymax];
 H1 = homography(p, cr_points');
 whiteboard_persp = homwarp(H1, I);
 I_perspective_resized = imresize(whiteboard_persp,size(BW));
-[I_cropped,rect] = imcrop(I_perspective_resized,cr);
+[I_cropped,rsize] = imcrop(I_perspective_resized,cr);
+
 % imwrite(I_cropped,'img1-cropped.jpg','jpg');
 
 % subplot(2,2,1);
@@ -142,7 +143,4 @@ I_perspective_resized = imresize(whiteboard_persp,size(BW));
 % subplot(2,2,4);
 % imshow(I_cropped);
 % title('Cropped whiteboard')
-
-rectified = I_cropped;
-rsize = rect;
 end
