@@ -2,7 +2,8 @@ import glob
 from fpdf import FPDF
 pdf = FPDF()
 
-imagelist=glob.glob("*.jpg")
+imagelist=glob.glob("../../Output/*.png")
+print(imagelist)
 
 for image in imagelist:
     pdf.add_page()

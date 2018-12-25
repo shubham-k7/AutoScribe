@@ -1,7 +1,7 @@
 clear all;
 close all;
 clc;
-I = imread('../Photos/nlp.jpg');
+I = imread('../Demo/board.png');
 I = imsharpen(I);
 I_grey = rgb2gray(I);
 imshow(I);

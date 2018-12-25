@@ -1,5 +1,4 @@
 function enhanced = enhance(I)
-figure, imshow(I)
 %I=imsharpen(I);
 R=I(:,:,1);
 G=I(:,:,2);
@@ -24,18 +23,18 @@ nB=B;
 lumm=B;
 num=0;
 dim = size(I);
-bsize=220;
-for x =1:bsize:617
-    for y=1:bsize:896
+bsize=10;
+for x =1:bsize:618
+    for y=1:bsize:892
         max=0.2126*R(y,x)+0.7152*G(y,x)+0.0722*B(y,x);
         maxi=x;
         maxj=y;
         for i=x:(x+bsize-1)
-            if(i>617)
+            if(i>618)
                 break;
             end
             for j=y:(y+bsize-1)
-                if(j>896)
+                if(j>892)
                     break;
                 end
                 lum=0.2126*R(j,i)+0.7152*G(j,i)+0.0722*B(j,i);
@@ -48,11 +47,11 @@ for x =1:bsize:617
             end
         end
         for i=x:(x+bsize-1)
-            if(i>617)
+            if(i>618)
                 break;
             end
             for j=y:(y+bsize-1)
-                if(j>896)
+                if(j>892)
                     break;
                 end
                 nR(j,i)=255;
@@ -74,7 +73,7 @@ h = ones(4,4)/16;
 RGB2 = imfilter(RGB1,h);
 RGB2=imsharpen(RGB2);
 RBG2=imadjust(RGB2, [], [], 5);
-figure;
-imshow(RGB2);
+%figure;
+% imshow(RGB2);
 enhanced=RGB2;
 end

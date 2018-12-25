@@ -1,5 +1,5 @@
 clc;
-I = imread('../Demo/vlcsnap-2018-12-02-21h13m19s489.png');
+I = imread('../Demo/board.png');
 
 imshow(I);
 [nrows ncols dim] = size(I);
