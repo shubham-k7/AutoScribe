@@ -1,1 +1,2 @@
-# IA# IA_Project
+# AutoScribe
+Automatic transcribing of Whiteboard notes using temporal analysis of images.
